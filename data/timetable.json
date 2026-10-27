@@ -1,0 +1,67 @@
+{
+  "schedule": [
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "10:00",
+      "id": "tt-101",
+      "start_time": "09:00",
+      "subject": "CS601: Distributed Systems",
+      "teacher": "Dr. Priya Nair",
+      "weekday": "Monday"
+    },
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "11:15",
+      "id": "tt-102",
+      "start_time": "10:15",
+      "subject": "CS602: Compiler Design",
+      "teacher": "Prof. R. Sen",
+      "weekday": "Monday"
+    },
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "10:00",
+      "id": "tt-201",
+      "start_time": "09:00",
+      "subject": "CS603: Computer Networks",
+      "teacher": "Dr. V. Raman",
+      "weekday": "Tuesday"
+    },
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "10:30",
+      "id": "tt-301",
+      "start_time": "09:30",
+      "subject": "CS604: Internet of Things (IoT)",
+      "teacher": "Prof. S. Joshi",
+      "weekday": "Wednesday"
+    },
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "12:00",
+      "id": "tt-302",
+      "start_time": "11:00",
+      "subject": "CS605: Cloud Computing",
+      "teacher": "Dr. Priya Nair",
+      "weekday": "Wednesday"
+    },
+    {
+      "classroom": "Lab-2 (Smart Lab)",
+      "end_time": "15:30",
+      "id": "tt-401",
+      "start_time": "13:30",
+      "subject": "CS606: Software Engineering Lab",
+      "teacher": "Prof. R. Sen",
+      "weekday": "Thursday"
+    },
+    {
+      "classroom": "CR-302 (Smart Hall)",
+      "end_time": "11:00",
+      "id": "tt-501",
+      "start_time": "10:00",
+      "subject": "CS607: Machine Learning",
+      "teacher": "Dr. K. Banerjee",
+      "weekday": "Friday"
+    }
+  ]
+}

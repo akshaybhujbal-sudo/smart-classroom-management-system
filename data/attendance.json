@@ -1,0 +1,184 @@
+{
+  "records": [
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-001",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-001"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-002",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-002"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-003",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "Medical leave",
+      "status": "ABSENT",
+      "student_id": "",
+      "student_roll": "CS2026-003"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-004",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-004"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-005",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-005"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-006",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-006"
+    },
+    {
+      "date": "2026-10-19",
+      "id": "att-20261019-CS2026-007",
+      "recorded_at": "2026-10-19T09:30:00Z",
+      "remarks": "Archived student historical record preserved",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-007"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-001",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-001"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-002",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-002"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-003",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "Unexcused",
+      "status": "ABSENT",
+      "student_id": "",
+      "student_roll": "CS2026-003"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-004",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-004"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-005",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-005"
+    },
+    {
+      "date": "2026-10-20",
+      "id": "att-20261020-CS2026-006",
+      "recorded_at": "2026-10-20T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-006"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-001",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-001"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-002",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-002"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-003",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "Returned",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-003"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-004",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-004"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-005",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "Sports tournament",
+      "status": "ABSENT",
+      "student_id": "",
+      "student_roll": "CS2026-005"
+    },
+    {
+      "date": "2026-10-21",
+      "id": "att-20261021-CS2026-006",
+      "recorded_at": "2026-10-21T09:30:00Z",
+      "remarks": "On time",
+      "status": "PRESENT",
+      "student_id": "",
+      "student_roll": "CS2026-006"
+    },
+    {
+      "date": "2026-10-25",
+      "id": "att-20261025-CS2026-999",
+      "recorded_at": "2026-10-21T18:20:27Z",
+      "remarks": "Integration Test",
+      "status": "PRESENT",
+      "student_id": "std-012",
+      "student_roll": "CS2026-999"
+    }
+  ]
+}

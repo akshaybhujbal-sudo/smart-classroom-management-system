@@ -1,0 +1,42 @@
+{
+  "classroom_id": "CR-302",
+  "classroom_name": "Smart Class & IoT Lab 302",
+  "devices": [
+    {
+      "device_type": "LIGHT",
+      "id": "dev-light-01",
+      "is_powered": true,
+      "level": 1,
+      "location": "Front Board Area",
+      "name": "Front Classroom Lights"
+    },
+    {
+      "device_type": "LIGHT",
+      "id": "dev-light-02",
+      "is_powered": true,
+      "level": 1,
+      "location": "Student Seating Area",
+      "name": "Rear Seating Lights"
+    },
+    {
+      "device_type": "FAN",
+      "id": "dev-fan-01",
+      "is_powered": true,
+      "level": 2,
+      "location": "Ceiling Center",
+      "name": "Ceiling Ventilation Fan Bank"
+    },
+    {
+      "device_type": "PROJECTOR",
+      "id": "dev-proj-01",
+      "is_powered": true,
+      "level": 1,
+      "location": "Ceiling Mount Screen",
+      "name": "Smart Interactive HD Projector"
+    }
+  ],
+  "is_simulated": true,
+  "last_telemetry_sync": "2026-10-21T18:20:27Z",
+  "occupancy_count": 28,
+  "temperature_celsius": 23.8
+}

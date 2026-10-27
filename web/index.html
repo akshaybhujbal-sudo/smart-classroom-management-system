@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Classroom Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>SmartClass OS</h1>
+                    <span>College Mini-Project</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Academic Administration</div>
+                <a class="nav-item active" data-view="dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-item" data-view="students">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>Student Records</span>
+                </a>
+                <a class="nav-item" data-view="attendance">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                    <span>Attendance Ledger</span>
+                </a>
+                <a class="nav-item" data-view="timetable">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Timetable & Slots</span>
+                </a>
+
+                <div class="nav-section-title" style="margin-top: 10px;">Smart Infrastructure</div>
+                <a class="nav-item" data-view="classroom">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    <span>Smart Classroom (IoT)</span>
+                </a>
+                <a class="nav-item" data-view="reports">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <span>Reports & Analytics</span>
+                </a>
+
+                <div class="nav-section-title" style="margin-top: 10px;">Documentation</div>
+                <a class="nav-item" data-view="about">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span>About Project & Viva</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="backend-status-card">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="status-indicator-dot" id="backend-status-dot"></span>
+                        <span class="status-label" id="backend-status-text">C++ Engine</span>
+                    </div>
+                    <span class="status-port" id="backend-port-label">REST :8080</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-toggle-btn" id="mobile-toggle" aria-label="Toggle navigation menu">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <h2 class="breadcrumb-title" id="page-title">Executive Dashboard</h2>
+                </div>
+
+                <div class="header-right">
+                    <div class="system-clock">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="current-clock">--:--:--</span>
+                    </div>
+                    <button class="btn-refresh" id="btn-refresh-global" title="Refresh data from C++ backend">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                        <span>Sync</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Body Area -->
+            <main class="content-body">
+                <!-- ======================================================= -->
+                <!-- VIEW 1: DASHBOARD                                       -->
+                <!-- ======================================================= -->
+                <section class="view-section active" id="view-dashboard">
+                    <!-- KPI Metric Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Active Students</h3>
+                                <div class="stat-value" id="kpi-total-students">--</div>
+                                <div class="stat-subtext" id="kpi-inactive-students">Enrolled in institute</div>
+                            </div>
+                            <div class="stat-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Today's Attendance</h3>
+                                <div class="stat-value" id="kpi-attendance-pct">--%</div>
+                                <div class="stat-subtext" id="kpi-attendance-ratio">Present / Conducted</div>
+                            </div>
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Academic Defaulters</h3>
+                                <div class="stat-value" id="kpi-defaulters-count">--</div>
+                                <div class="stat-subtext">&lt; 75% attendance threshold</div>
+                            </div>
+                            <div class="stat-icon amber">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Classroom IoT State</h3>
+                                <div class="stat-value" id="kpi-room-temp">--°C</div>
+                                <div class="stat-subtext" id="kpi-room-occupancy">-- inside room</div>
+                            </div>
+                            <div class="stat-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split Grid: Schedule & IoT Status -->
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                        <!-- Today's Schedule Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    Today's Lecture Schedule (<span id="dash-today-name">--</span>)
+                                </h2>
+                                <a class="btn btn-secondary btn-sm" data-action="go-timetable">Full Timetable &rarr;</a>
+                            </div>
+                            <div class="card-body" style="padding: 0;">
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Time Slot</th>
+                                                <th>Subject Code & Name</th>
+                                                <th>Instructor</th>
+                                                <th>Room</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dash-timetable-body">
+                                            <tr><td colspan="4" style="text-align: center; padding: 24px;">Loading timetable from C++ backend...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Classroom IoT Quick Overview -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                                    IoT Classroom Lab
+                                </h2>
+                                <span class="badge active" id="dash-sim-badge">Simulated</span>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: 14px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+                                        <span style="font-size: 13.5px; font-weight: 500; color: var(--text-secondary);">Room Ambient Temp</span>
+                                        <span style="font-size: 16px; font-weight: 700; color: var(--navy-900);" id="dash-env-temp">24.0°C</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+                                        <span style="font-size: 13.5px; font-weight: 500; color: var(--text-secondary);">Current Occupancy</span>
+                                        <span style="font-size: 16px; font-weight: 700; color: var(--navy-900);" id="dash-env-occupancy">0 persons</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+                                        <span style="font-size: 13.5px; font-weight: 500; color: var(--text-secondary);">Lighting Appliances</span>
+                                        <span class="badge active" id="dash-lights-status">--</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 13.5px; font-weight: 500; color: var(--text-secondary);">Interactive Projector</span>
+                                        <span class="badge inactive" id="dash-proj-status">--</span>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <a class="btn btn-primary btn-sm" style="width: 100%; text-align: center;" data-action="go-classroom">Open Smart IoT Controls &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 2: STUDENTS MANAGEMENT                             -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-students">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                Enrolled Student Directory
+                            </h2>
+                            <button class="btn btn-primary" id="btn-open-add-student">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span>Register New Student</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <!-- Filter Bar -->
+                            <div class="filter-bar">
+                                <div class="search-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    <input type="text" id="student-search-input" class="form-control" placeholder="Search by roll number, name, or email...">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <label class="form-label" style="margin-bottom: 0;">Show:</label>
+                                    <select id="student-filter-status" class="form-control" style="width: auto;">
+                                        <option value="all">All Records</option>
+                                        <option value="active" selected>Active Students</option>
+                                        <option value="inactive">Archived / Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Student Records Table -->
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Roll Number</th>
+                                            <th>Full Name</th>
+                                            <th>Division</th>
+                                            <th>Department / Course</th>
+                                            <th>Email Address</th>
+                                            <th>Semester</th>
+                                            <th>Status</th>
+                                            <th style="text-align: right;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="student-table-body">
+                                        <!-- Populated dynamically via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 3: ATTENDANCE MANAGEMENT                           -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-attendance">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                                Daily Attendance Roster
+                            </h2>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <label for="att-date-picker" class="form-label" style="margin-bottom: 0; font-weight: 600;">Date:</label>
+                                    <input type="date" id="att-date-picker" class="form-control" style="width: auto; padding: 6px 10px;">
+                                </div>
+                                <button class="btn btn-secondary btn-sm" id="btn-mark-all-present">Mark All Present</button>
+                                <button class="btn btn-secondary btn-sm" id="btn-mark-all-absent">Mark All Absent</button>
+                                <button class="btn btn-success" id="btn-save-attendance">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Save Attendance</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Daily Attendance Stats Strip -->
+                            <div style="background-color: var(--bg-alt); border-radius: var(--radius-sm); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+                                <div>
+                                    <span style="font-size: 13px; color: var(--text-secondary);">Selected Session: </span>
+                                    <strong style="color: var(--navy-900);" id="att-session-date-label">--</strong>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 20px;">
+                                    <div>Present: <strong style="color: var(--success);" id="att-count-present">0</strong></div>
+                                    <div>Absent: <strong style="color: var(--danger);" id="att-count-absent">0</strong></div>
+                                    <div>Daily Rate: <strong style="color: var(--primary);" id="att-rate-percentage">0.0%</strong></div>
+                                </div>
+                            </div>
+
+                            <!-- Attendance Roster Table -->
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Roll Number</th>
+                                            <th>Student Name</th>
+                                            <th>Division</th>
+                                            <th style="text-align: center;">Status (Present / Absent)</th>
+                                            <th>Notes / Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="att-roster-body">
+                                        <!-- Injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 4: TIMETABLE MANAGEMENT                            -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-timetable">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Academic Lecture Schedule
+                            </h2>
+                            <button class="btn btn-primary" id="btn-open-add-slot">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span>Schedule Lecture Slot</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <!-- Weekday Filter Tabs -->
+                            <div style="display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px;" id="timetable-day-tabs">
+                                <button class="btn btn-secondary btn-sm active" data-day="ALL">All Week</button>
+                                <button class="btn btn-secondary btn-sm" data-day="MONDAY">Monday</button>
+                                <button class="btn btn-secondary btn-sm" data-day="TUESDAY">Tuesday</button>
+                                <button class="btn btn-secondary btn-sm" data-day="WEDNESDAY">Wednesday</button>
+                                <button class="btn btn-secondary btn-sm" data-day="THURSDAY">Thursday</button>
+                                <button class="btn btn-secondary btn-sm" data-day="FRIDAY">Friday</button>
+                                <button class="btn btn-secondary btn-sm" data-day="SATURDAY">Saturday</button>
+                            </div>
+
+                            <!-- Schedule Table -->
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Time Slot (24-hr)</th>
+                                            <th>Subject Title / Code</th>
+                                            <th>Instructor / Faculty</th>
+                                            <th>Classroom Hall</th>
+                                            <th style="text-align: right;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="timetable-table-body">
+                                        <!-- Injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 5: SMART CLASSROOM IoT MONITORING                  -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-classroom">
+                    <!-- Demo Disclaimer Banner -->
+                    <div class="demo-banner">
+                        <div class="demo-banner-content">
+                            <span class="demo-banner-badge">SIMULATION MODE</span>
+                            <span>Environmental telemetry & device relays are simulated in real-time by the C++ backend. Ready for microcontroller serial/HTTP hooks.</span>
+                        </div>
+                        <span style="font-size: 12px; opacity: 0.9;">No physical IoT hardware attached</span>
+                    </div>
+
+                    <!-- Ambient Telemetry Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Classroom Ambient Temperature</h3>
+                                <div class="stat-value" id="iot-temp-display">--°C</div>
+                                <div class="stat-subtext">Optimal range: 22°C - 26°C</div>
+                            </div>
+                            <div class="stat-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Live Room Occupancy</h3>
+                                <div class="stat-value" id="iot-occupancy-display">--</div>
+                                <div class="stat-subtext">Headcount detected inside hall</div>
+                            </div>
+                            <div class="stat-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <h3>Total Appliances Active</h3>
+                                <div class="stat-value" id="iot-active-appliances">--</div>
+                                <div class="stat-subtext">Switched ON currently</div>
+                            </div>
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Appliance Controls Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                                Interactive Appliance Controls & Relays
+                            </h2>
+                            <span class="badge active">Authoritative C++ State</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="device-grid" id="classroom-devices-grid">
+                                <!-- Rendered dynamically via JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 6: REPORTS & ANALYTICS                             -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-reports">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                Academic Attendance Performance & Defaulters Ledger
+                            </h2>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <a id="btn-export-attendance-csv" class="btn btn-secondary btn-sm" download>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Export Attendance CSV</span>
+                                </a>
+                                <a id="btn-export-students-csv" class="btn btn-secondary btn-sm" download>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Export Students CSV</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 20px;">
+                                Students with attendance strictly below the institutional <strong>75.0% threshold</strong> are highlighted as academic defaulters for departmental notification.
+                            </p>
+
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Roll Number</th>
+                                            <th>Full Name</th>
+                                            <th>Conducted Sessions</th>
+                                            <th>Attended Sessions</th>
+                                            <th>Absent Sessions</th>
+                                            <th>Overall Attendance %</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reports-table-body">
+                                        <!-- Injected via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======================================================= -->
+                <!-- VIEW 7: ABOUT PROJECT                                   -->
+                <!-- ======================================================= -->
+                <section class="view-section" id="view-about">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                Project Overview & Architecture Guide
+                            </h2>
+                            <span class="badge active">Viva Defense Ready</span>
+                        </div>
+                        <div class="card-body" style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
+                            <h3 style="color: var(--navy-900); font-size: 18px; margin-bottom: 8px;">Smart Classroom Management System</h3>
+                            <p style="margin-bottom: 16px;">
+                                A complete, high-performance college engineering mini-project engineered using a <strong>Modern C++17 backend</strong> and a responsive <strong>HTML5/CSS3/JavaScript</strong> single-page frontend. Designed for local intranet or laboratory demonstration without third-party cloud dependencies or runtime interpreters.
+                            </p>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0;">
+                                <div style="background-color: var(--bg-alt); padding: 18px; border-radius: var(--radius-sm); border-left: 4px solid var(--primary-light);">
+                                    <h4 style="color: var(--navy-900); margin-bottom: 6px;">C++ Backend Architecture</h4>
+                                    <p style="font-size: 13px;">Built in pure C++17 utilizing Clean Architecture, RAII, and Object-Oriented Services (StudentManager, AttendanceManager, TimetableManager, ClassroomManager, ReportService).</p>
+                                </div>
+                                <div style="background-color: var(--bg-alt); padding: 18px; border-radius: var(--radius-sm); border-left: 4px solid var(--success);">
+                                    <h4 style="color: var(--navy-900); margin-bottom: 6px;">Zero NPM Dependencies</h4>
+                                    <p style="font-size: 13px;">Frontend is crafted using pure semantic HTML5, modern CSS variables, and native ES6 Fetch API. Starts instantly without Node.js or bundlers.</p>
+                                </div>
+                                <div style="background-color: var(--bg-alt); padding: 18px; border-radius: var(--radius-sm); border-left: 4px solid var(--warning);">
+                                    <h4 style="color: var(--navy-900); margin-bottom: 6px;">Atomic File Persistence</h4>
+                                    <p style="font-size: 13px;">Data is saved via reader-writer mutex locks (<code>std::shared_mutex</code>) and atomic temp-file replace, preserving records across server restarts.</p>
+                                </div>
+                            </div>
+
+                            <h4 style="color: var(--navy-900); margin-top: 24px; margin-bottom: 8px;">Hardware Extensibility (Future Scope)</h4>
+                            <p style="margin-bottom: 16px;">
+                                The simulated environmental telemetry and appliance switches are decoupled behind clean service interfaces. In future development, physical microcontrollers (e.g., <strong>ESP32</strong> or <strong>Arduino Uno</strong> with DHT11/DHT22 temperature sensors and relay modules) can be connected over serial UART or Wi-Fi without altering business logic or frontend views.
+                            </p>
+
+                            <div style="background-color: var(--bg-alt); border-radius: var(--radius-sm); padding: 14px 18px; margin-top: 20px;">
+                                <strong style="color: var(--navy-900);">College Viva Talking Point:</strong>
+                                <span>"Why C++ for a web backend?" &mdash; C++ provides zero runtime interpreter overhead, microsecond latency, deterministic memory management, and direct hardware interfacing capabilities compared to interpreted runtimes like Node.js or Python.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- MODALS & DIALOGS                                                    -->
+    <!-- =================================================================== -->
+
+    <!-- Add / Edit Student Modal -->
+    <div class="modal-overlay" id="modal-student">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modal-student-title">Register New Student</h3>
+                <button class="modal-close-btn" data-close-modal>&times;</button>
+            </div>
+            <form id="form-student">
+                <div class="modal-body">
+                    <input type="hidden" id="student-id-field">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="std-roll">Roll Number *</label>
+                            <input type="text" id="std-roll" class="form-control" placeholder="e.g. CS2026-042" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="std-division">Division *</label>
+                            <select id="std-division" class="form-control">
+                                <option value="A">Division A</option>
+                                <option value="B">Division B</option>
+                                <option value="C">Division C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="std-name">Full Name *</label>
+                        <input type="text" id="std-name" class="form-control" placeholder="e.g. Kavya Sundaram" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="std-email">Email Address</label>
+                        <input type="email" id="std-email" class="form-control" placeholder="e.g. student@college.edu">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="std-dept">Department / Branch</label>
+                            <input type="text" id="std-dept" class="form-control" value="Computer Science & Engineering">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="std-semester">Semester</label>
+                            <select id="std-semester" class="form-control">
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6" selected>Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit-student">Save Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add / Edit Timetable Slot Modal -->
+    <div class="modal-overlay" id="modal-timetable">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modal-timetable-title">Schedule Lecture Slot</h3>
+                <button class="modal-close-btn" data-close-modal>&times;</button>
+            </div>
+            <form id="form-timetable">
+                <div class="modal-body">
+                    <input type="hidden" id="tt-id-field">
+                    <div class="form-group">
+                        <label class="form-label" for="tt-subject">Subject Code & Title *</label>
+                        <input type="text" id="tt-subject" class="form-control" placeholder="e.g. CS601: Distributed Systems" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="tt-teacher">Faculty / Instructor Name *</label>
+                        <input type="text" id="tt-teacher" class="form-control" placeholder="e.g. Dr. Priya Nair" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="tt-room">Classroom Hall *</label>
+                            <input type="text" id="tt-room" class="form-control" value="CR-302 (Smart Hall)" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="tt-weekday">Weekday *</label>
+                            <select id="tt-weekday" class="form-control">
+                                <option value="MONDAY">Monday</option>
+                                <option value="TUESDAY">Tuesday</option>
+                                <option value="WEDNESDAY">Wednesday</option>
+                                <option value="THURSDAY">Thursday</option>
+                                <option value="FRIDAY">Friday</option>
+                                <option value="SATURDAY">Saturday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="tt-start">Start Time (24-hr) *</label>
+                            <input type="time" id="tt-start" class="form-control" value="09:00" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="tt-end">End Time (24-hr) *</label>
+                            <input type="time" id="tt-end" class="form-control" value="10:00" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-close-modal>Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit-timetable">Save Schedule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- General Confirmation Modal -->
+    <div class="modal-overlay" id="modal-confirm">
+        <div class="modal-box" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 id="modal-confirm-title">Confirm Action</h3>
+                <button class="modal-close-btn" data-close-modal>&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-confirm-message" style="font-size: 14px; color: var(--text-secondary);">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-close-modal>Cancel</button>
+                <button type="button" class="btn btn-danger" id="btn-confirm-action">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Core JavaScript Application Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

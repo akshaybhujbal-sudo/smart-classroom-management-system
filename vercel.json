@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "name": "smart-classroom-management-system",
+  "buildCommand": null,
+  "outputDirectory": "web",
+  "rewrites": [
+    { "source": "/api/dashboard",              "destination": "/api/dashboard" },
+    { "source": "/api/students",               "destination": "/api/students" },
+    { "source": "/api/students/:id",           "destination": "/api/students?id=:id" },
+    { "source": "/api/attendance",             "destination": "/api/attendance" },
+    { "source": "/api/attendance/:id",         "destination": "/api/attendance?id=:id" },
+    { "source": "/api/attendance/student/:id", "destination": "/api/attendance?student=:id" },
+    { "source": "/api/timetable",              "destination": "/api/timetable" },
+    { "source": "/api/timetable/:id",          "destination": "/api/timetable?id=:id" },
+    { "source": "/api/classroom",              "destination": "/api/classroom" },
+    { "source": "/api/classroom/devices",      "destination": "/api/classroom" },
+    { "source": "/api/reports/students",       "destination": "/api/reports/students" },
+    { "source": "/api/reports/defaulters",     "destination": "/api/reports/defaulters" },
+    { "source": "/api/reports/attendance",     "destination": "/api/reports/attendance" },
+    { "source": "/api/reports/export-csv",     "destination": "/api/reports/export-csv" }
+  ]
+}

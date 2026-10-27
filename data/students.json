@@ -1,0 +1,136 @@
+{
+  "students": [
+    {
+      "created_at": "2026-10-01T09:00:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "aarav.sharma@college.edu",
+      "full_name": "Aarav Sharma",
+      "id": "std-001",
+      "is_active": true,
+      "roll_number": "CS2026-001",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:05:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "diya.patel@college.edu",
+      "full_name": "Diya Patel",
+      "id": "std-002",
+      "is_active": true,
+      "roll_number": "CS2026-002",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:10:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "rohan.verma@college.edu",
+      "full_name": "Rohan Verma",
+      "id": "std-003",
+      "is_active": true,
+      "roll_number": "CS2026-003",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:15:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "ananya.iyer@college.edu",
+      "full_name": "Ananya Iyer",
+      "id": "std-004",
+      "is_active": true,
+      "roll_number": "CS2026-004",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:20:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "B",
+      "email": "vikram.singh@college.edu",
+      "full_name": "Vikram Singh",
+      "id": "std-005",
+      "is_active": true,
+      "roll_number": "CS2026-005",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:25:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "B",
+      "email": "sneha.k@college.edu",
+      "full_name": "Sneha Kulkarni",
+      "id": "std-006",
+      "is_active": true,
+      "roll_number": "CS2026-006",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:30:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "B",
+      "email": "arjun.nair@college.edu",
+      "full_name": "Arjun Nair",
+      "id": "std-007",
+      "is_active": false,
+      "roll_number": "CS2026-007",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:35:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "meera.joshi@college.edu",
+      "full_name": "Meera Joshi",
+      "id": "std-008",
+      "is_active": true,
+      "roll_number": "CS2026-008",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:40:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "B",
+      "email": "kabir.mehta@college.edu",
+      "full_name": "Kabir Mehta",
+      "id": "std-009",
+      "is_active": true,
+      "roll_number": "CS2026-009",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:45:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "A",
+      "email": "pooja.reddy@college.edu",
+      "full_name": "Pooja Reddy",
+      "id": "std-010",
+      "is_active": true,
+      "roll_number": "CS2026-010",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-01T09:50:00Z",
+      "department": "Computer Science & Engineering",
+      "division": "B",
+      "email": "siddharth.r@college.edu",
+      "full_name": "Siddharth Rao",
+      "id": "std-011",
+      "is_active": true,
+      "roll_number": "CS2026-011",
+      "semester": 6
+    },
+    {
+      "created_at": "2026-10-21T18:20:27Z",
+      "department": "CSE",
+      "division": "A",
+      "email": "verify@college.edu",
+      "full_name": "Verification Student",
+      "id": "std-012",
+      "is_active": false,
+      "roll_number": "CS2026-999",
+      "semester": 6
+    }
+  ]
+}
