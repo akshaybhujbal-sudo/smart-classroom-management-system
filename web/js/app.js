@@ -204,7 +204,7 @@
         this.classList.add('spinning');
         await loadViewData(state.currentView, true);
         setTimeout(() => this.classList.remove('spinning'), 500);
-        showToast('Data synchronized with C++ backend', 'info', 2000);
+        showToast('Data synchronized with Python backend', 'info', 2000);
     });
 
     // -------------------------------------------------------------------------
@@ -216,7 +216,7 @@
         const text = document.getElementById('backend-status-text');
         if (isOnline) {
             dot.classList.remove('offline');
-            text.textContent = 'C++ Online';
+            text.textContent = 'Python Online';
         } else {
             dot.classList.add('offline');
             text.textContent = 'Offline';
@@ -252,7 +252,7 @@
         } catch (err) {
             console.error('Failed to load view data:', err);
             updateBackendStatus(false);
-            showToast('Unable to connect to C++ backend server.', 'error');
+            showToast('Unable to connect to Python backend server.', 'error');
         }
     }
 

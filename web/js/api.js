@@ -1,6 +1,6 @@
 /**
  * Smart Classroom Management System — REST API Client
- * Interfaces seamlessly with the C++17 Crow/Httplib Server
+ * Interfaces seamlessly with the Python Flask REST API Server
  */
 
 class ApiService {
@@ -41,7 +41,7 @@ class ApiService {
                 return {
                     success: false,
                     status: response.status,
-                    error: `Invalid response format from C++ server (HTTP ${response.status})`
+                    error: `Invalid response format from Python server (HTTP ${response.status})`
                 };
             }
 
@@ -59,7 +59,7 @@ class ApiService {
             return {
                 success: false,
                 status: 0,
-                error: 'Cannot connect to C++ backend server. Please verify the server is running on localhost.'
+                error: 'Cannot connect to Python backend server. Please verify the server is running on localhost.'
             };
         }
     }
